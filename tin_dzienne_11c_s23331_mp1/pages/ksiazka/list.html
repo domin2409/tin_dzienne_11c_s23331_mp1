@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../styles/style.css">
+        <script src="../../script/script.js"></script>
+        <title>Wypożyczalnia książek</title>
+    </head>
+    <body>
+        <header>
+            <h1>Wypożyczalnia książek</h1>
+        <img src="../../images/150.png" alt="Wypożyczalnia książek">
+        </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Strona główna</a></li>
+            <li><a href="../czytelnik/list.html">Czytelnicy</a></li>
+            <li><a href="../wypozyczenie/list.html">Wypożyczenie</a></li>
+            <li><a class="active"  href="../ksiazka/list.html">Książka</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>
+            Wykaz książek
+        </h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Tytuł</th>
+                    <th>Autor</th>
+                    <th>Waga książki</th>
+                    <th>Data wydania</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ogniem i Mieczem</td>
+                    <td>Henryk Sienkiewicz</td>
+                    <td>7000g.</td>
+                    <td>2018-09-09</td>
+                    <td><ul class="list-actions">
+                        <li><a class= "list-actions-button-details" href="details.html">Szczegóły</a></li>
+                        <li><a class= "list-actions-button-edit" href="form-edit.html">Edytuj</a></li>
+                        <li><a class= "list-actions-button-delete" href="list-empty.html" onclick="confirmChange()">Usuń</a></li>
+                    </ul></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="form.html" class="button-add">Dodaj nową książkę</a></p>
+    </main>
+    <footer>
+        Domninik Dudzik s23331
+    </footer>
+</body>
+</html>

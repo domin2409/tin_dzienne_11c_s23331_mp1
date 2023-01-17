@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../styles/style.css">
+        <script src="../../script/script.js"></script>
+        <script src="../../script/validationKsiazkaForm.js"></script>
+        <script src="../../script/validationCommon.js"></script>
+        <title>Wypożyczalnia książek</title>
+    </head>
+    <body>
+        <header>
+            <h1>Wypożyczalnia książek</h1>
+        <img src="../../images/150.png" alt="Wypożyczalnia książek">
+        </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Strona główna</a></li>
+            <li><a href="../czytelnik/list.html">Czytelnicy</a></li>
+            <li><a href="../wypozyczenie/list.html">Wypożyczenie</a></li>
+            <li><a class="active" href="../ksiazka/list.html">Książka</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>
+            Formularz dodawania książki
+        </h2>
+        <form action="" novalidate onsubmit="return validateForm()">
+            <label for="BookTitle">Tytuł książki: <span class="symbol-required">*</span></label>
+            <input type="text" name="title" id="BookTitle"  required>
+            <span id="errorBookTitle"> </span>
+
+            <label for="AuthorLastName">Nazwisko autora: <span class="symbol-required">*</span></label>
+            <input type="text" name="AuthorLastName" id="AuthorLastName" required>
+            <span id="errorAuthorLastName"> </span>
+
+            <label for="AuthorFirstName">Imie autora: <span class="symbol-required">*</span></label>
+            <input type="text" name="AuthorFirstName" id="AuthorFirstName" required>
+            <span id="errorAuthorFirstName"> </span>
+            
+            <label for="BookWeight">Waga książki: </label>
+            <input type="text" name="BookWeight" id="BookWeight" >
+            <span id="errorBookWeight"> </span>
+
+            <label for="BookReleaseDate">Data wydania: <span class="symbol-required">*</span></label>
+            <input type="date" name="BookReleaseDate" id="BookReleaseDate" required>
+            <span id="errorBookReleaseDate"> </span>
+            
+            <div>
+
+                <input class ="form-button-submit" onclick="confirmChange()" type="submit" value="Dodaj">
+            <a class ="form-button-cancel" href="list.html" onclick="confirmChange()">Anuluj</a>
+            <p id="errorSummary"> </p>
+            </div>
+            
+            
+            
+            
+        </form>
+    </main>
+    <footer>
+        Dominik, Dudzik, s23331
+    </footer>
+</body>
+</html>

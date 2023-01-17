@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../styles/style.css">
+        <script src="../../script/script.js"></script>
+        <title>Wypożyczalnia książek</title>
+    </head>
+    <body>
+        <header>
+            <h1>Wypożyczalnia książek</h1>
+        <img src="../../images/150.png" alt="Wypożyczalnia książek">
+        </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Strona główna</a></li>
+            <li><a href="../czytelnik/list.html">Czytelnicy</a></li>
+            <li><a class="active" href="../wypozyczenie/list.html">Wypożyczenie</a></li>
+            <li><a href="../ksiazka/list.html">Książka</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>
+            Formularz edytowania rekordu
+        </h2>
+        <form action="../wypozyczenie/list.html" id="AddBorrowingForm">
+
+            <label for="Reader">Czytelnik: <span class="symbol-required">*</span></label>
+            <select name="Reader" id="Reader" form="AddBorrowingForm" required multiple>
+                
+<!-- Będą grupowane po autorach, ułożone alfabetycznie, być może zrezygnuję z optgroup, jeśli będzie nie wygodne przy dłuższych listach  -->
+                
+                <optgroup label="A">
+                    <option value="Abramczyk Mateusz">Abramczyk Mateusz</option>
+                </optgroup>
+                <optgroup label="B"></optgroup>
+                <optgroup label="C"></optgroup>
+                <optgroup label="..."></optgroup>
+                <optgroup label="K">
+                    <option value="Kowalski Jan" selected>Kowalski Jan</option>
+                </optgroup>
+                
+            </select>
+            <span id="errorReader"></span>
+
+
+            <label for="BookTitle">Tytuł książki: <span class="symbol-required">*</span></label>
+            <select name="BookTitle" id="BookTitle" form="AddBorrowingForm" required multiple>
+                
+<!-- Będą grupowane po autorach, ułożone alfabetycznie, być może zrezygnuję z optgroup, jeśli będzie nie wygodne przy dłuższych listach  -->
+                
+                <optgroup label="Franz Kafka">
+                    <option value="Proces">Proces</option>
+                    <option value="Metamorfoza">Metamorfoza</option>
+                </optgroup>
+                <optgroup label="Henryk Sienkiewicz">
+                    <option value="Ogniem i Mieczem">Ogniem i Mieczem</option>
+                    <option value="Quo vadis">Quo vadis</option>
+                </optgroup>
+                <optgroup label="Michaił Bułhakow">
+                    <option value="Mistrz i Małgorzata" selected>Mistrz i Małgorzata</option>
+                    <option value="Diaboliada">Diaboliada</option>
+                </optgroup>
+              </select>
+            <span id="errorBookTitle"></span>
+
+
+            
+
+            <label for="date">Data wypożyczania: <span class="symbol-required">*</span></label>
+            <input class="errors-text" type="date" name="date" id="date" required>
+            <span id="errorDate"></span>
+
+            <label for="returned">Zwrócono?: </label>
+            <input type="checkbox" name="returned" id="returned" checked>
+
+
+            <div>
+
+                <input class ="form-button-submit" onclick="confirmChange()" type="submit" value="Aktualizuj">
+            <a class ="form-button-cancel" href="list.html" onclick="confirmChange()">Anuluj</a>
+            <p id="errorSummary"></p>
+            </div>
+            
+        </form>
+    </main>
+    <footer>
+        Imie, nazwisko, numer studencki
+    </footer>
+</body>
+</html>

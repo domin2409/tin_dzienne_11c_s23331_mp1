@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../styles/style.css">
+        <script src="../../script/script.js"></script>
+        <title>Wypożyczalnia książek</title>
+    </head>
+    <body>
+        <header>
+            <h1>Wypożyczalnia książek</h1>
+        <img src="../../images/150.png" alt="Wypożyczalnia książek">
+        </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Strona główna</a></li>
+            <li><a href="../czytelnik/list.html">Czytelnicy</a></li>
+            <li><a class="active" href="../wypozyczenie/list.html">Wypożyczenie</a></li>
+            <li><a href="../ksiazka/list.html">Książka</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>
+            Wypożyczenia
+        </h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Czytelnik:</th>
+                    <th>Autor:</th>
+                    <th>Tytuł książki</th>
+                    <th>Data wypożyczenia</th>
+                    <th>Zwrócono?</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>J. Kowalski</td>
+                    <td>H. Sienkiewicz</td>
+                    <td>Ogniem i Mieczem</td>
+                    <td>2018-09-09</td>
+                    <td>Tak</td>
+                    <td><ul class="list-actions">
+                        <li><a class= "list-actions-button-details" href="details.html">Szczegóły</a></li>
+                        <li><a class= "list-actions-button-edit" href="form-edit.html">Edytuj</a></li>
+                        <li><a class= "list-actions-button-delete" href="list-empty.html" onclick="confirmChange()">Usuń</a></li>
+                    </ul></td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <p><a class="button-add" href="form.html">Wypożycz książkę</a></p>
+    </main>
+    <footer>
+        Domninik Dudzik s23331
+    </footer>
+</body>
+</html>

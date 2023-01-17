@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../styles/style.css">
+        <script src="../../script/script.js"></script>
+        <title>Wypożyczalnia książek</title>
+    </head>
+    <body>
+        <header>
+            <h1>Wypożyczalnia książek</h1>
+        <img src="../../images/150.png" alt="Wypożyczalnia książek">
+        </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Strona główna</a></li>
+            <li><a href="../czytelnik/list.html">Czytelnicy</a></li>
+            <li><a href="../wypozyczenie/list.html">Wypożyczenie</a></li>
+            <li><a class="active" href="../ksiazka/list.html">Książka</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>
+            Formularz dodawania Czytelnika
+        </h2>
+        <form action="list.html">
+            <label for="BookTitle">Tytuł książki:</label>
+            <input type="text" name="title" id="BookTitle" value= "" >
+            <span id="errorTitle"></span>
+
+            <label for="AuthorLastName">Nazwisko autora:</label>
+            <input type="text" name="AuthorLastName" id="AuthorLastName" value= "">
+            <span id="errorAuthorLastName"></span>
+
+            <label for="AuthorFirstName">Imie autora:</label>
+            <input type="text" name="AuthorFirstName" id="AuthorFirstName" value="">
+            <span id="errorAuthorFirstName"></span>
+            
+            <label for="BookWeight">Waga książki:</label>
+            <input class="error-input" type="text" name="BookWeight" id="BookWeight" value="">
+            <span class="errors-text"id="errorBookWeight">Nieprawidłowa waga książki</span>
+
+            <label for="BookReleaseDate">Data wydania:</label>
+            <input type="date" name="BookReleaseDate" id="BookReleaseDate" value="">
+            <span id="errorDate"></span>
+            
+            <div>
+
+                <input class ="form-button-submit" onclick="confirmChange()" type="submit" value="Dodaj">
+            <a class ="form-button-cancel" href="list.html" onclick="confirmChange()">Anuluj</a>
+            <p id="errorSummary">Popraw błędy</p>
+            </div>
+            
+        </form>
+    </main>
+    <footer>
+        Imie, nazwisko, numer studencki
+    </footer>
+</body>
+</html>

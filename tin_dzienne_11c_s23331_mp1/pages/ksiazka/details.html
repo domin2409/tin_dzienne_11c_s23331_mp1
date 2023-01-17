@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/style.css">
+    <script src="../../script/script.js"></script>
+
+    <title>Wypożyczalnia książek</title>
+</head>
+<body>
+    <header>
+        <h1>Wypożyczalnia książek</h1>
+        <img src="../../images/150.png" alt="Wypożyczalnia książek">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Strona główna</a></li>
+            <li><a href="../czytelnik/list.html">Czytelnicy</a></li>
+            <li><a href="../wypozyczenie/list.html">Wypożyczenie</a></li>
+            <li><a class="active" href="../ksiazka/list.html">Książka</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>
+            Szczegóły książki
+        </h2>
+        <form action="form-edit.html">
+            <label for="BookTitle">Tytuł książki:</label>
+            <input type="text" name="BookTitle" id="BookTitle" value= "Mistrz i Małgorzata" disabled>
+            <span id="errorTitle"></span>
+
+            <label for="AuthorLastName">Nazwisko autora:</label>
+            <input type="text" name="AuthorLastName" id="AuthorLastName" value= "Bułhahow" disabled>
+            <span id="errorAuthorLastName"></span>
+
+            <label for="AuthorFirstName">Imie autora:</label>
+            <input type="text" name="AuthorFirstName" id="AuthorFirstName" value="Michaił" disabled>
+            <span id="errorAuthorFirstName"></span>
+            
+            <label for="BookWeight">Waga książki:</label>
+            <input type="text" name="BookWeight" id="BookWeight" value="7000g." disabled>
+            <span id="errorBookWeight"></span>
+
+            <label for="BookReleaseDate">Data wydania:</label>
+            <input type="date" name="BookReleaseDate" id="BookReleaseDate" value="2018-09-09" disabled>
+            <span id="errorDate"></span>
+            
+            <div>
+
+                <input class ="form-button-submit" type="submit" value="Edytuj">
+            <a class ="form-button-cancel" href="list.html" onclick="confirmChange()">Anuluj</a>
+            <p id="errorSummary"></p>
+            </div>
+            
+        </form>
+        <h2>
+            Historia wypożyczeń
+        </h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Data wypożyczenia</th>
+                    <th>Zwrócono?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jan</td>
+                    <td>Kowalski</td>
+                    <td>2021.24.09</td>
+                    <td>Tak</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        Dominik, Dudzik, s23331
+    </footer>
+</body>
+</html>
