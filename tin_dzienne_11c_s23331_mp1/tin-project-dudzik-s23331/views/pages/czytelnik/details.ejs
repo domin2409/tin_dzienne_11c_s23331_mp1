@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/style.css">
-    <script src="../../script/script.js"></script>
-    <title>Wypożyczalnia książek</title>
-</head>
-<body>
-    <header>
-        <h1>Wypożyczalnia książek</h1>
-        <img src="../../images/150.png" alt="Wypożyczalnia książek">
-    </header>
-    <nav>
-        <ul>
-            <li><a href="../index.html">Strona główna</a></li>
-            <li><a class="active" href="../czytelnik/list.html">Czytelnicy</a></li>
-            <li><a href="../wypozyczenie/list.html">Wypożyczenie</a></li>
-            <li><a href="../ksiazka/list.html">Książka</a></li>
-        </ul>
-    </nav>
+<%- include('../../fragments/header.ejs') %>
     <main>
         <h2>
             Formularz dodawania Czytelnika
@@ -68,8 +46,4 @@
             </tbody>
         </table>
     </main>
-    <footer>
-        Dominik, Dudzik, s23331
-    </footer>
-</body>
-</html>
+<%- include('../../fragments/footer.ejs') %>

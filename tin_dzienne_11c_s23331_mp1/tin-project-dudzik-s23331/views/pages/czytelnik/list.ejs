@@ -1,0 +1,31 @@
+<%- include('../../fragments/header.ejs') %>
+
+<main>
+        <h2>
+            Lista czytelników
+        </h2>
+        <table  class="table-list">
+            <thead>
+                <tr>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Data dołączenia</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jan</td>
+                    <td>Kowalski</td>
+                    <td>2018-09-09</td>
+                    <td><ul class="list-actions">
+                        <li><a class= "list-actions-button-details" href="details.ejs">Szczegóły</a></li>
+                        <li><a class= "list-actions-button-edit" href="form-edit.ejs">Edytuj</a></li>
+                        <li><a class= "list-actions-button-delete" href="list-empty.html" onclick="confirmChange()">Usuń</a></li>
+                    </ul></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="form.ejs" class="button-add">Dodaj nowego pracownika</a></p>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

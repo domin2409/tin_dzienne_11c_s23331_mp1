@@ -1,0 +1,32 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>
+            Wykaz książek
+        </h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Tytuł</th>
+                    <th>Autor</th>
+                    <th>Waga książki</th>
+                    <th>Data wydania</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ogniem i Mieczem</td>
+                    <td>Henryk Sienkiewicz</td>
+                    <td>7000g.</td>
+                    <td>2018-09-09</td>
+                    <td><ul class="list-actions">
+                        <li><a class= "list-actions-button-details" href="details.ejs">Szczegóły</a></li>
+                        <li><a class= "list-actions-button-edit" href="form-edit.ejs">Edytuj</a></li>
+                        <li><a class= "list-actions-button-delete" href="list-empty.html" onclick="confirmChange()">Usuń</a></li>
+                    </ul></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="form.ejs" class="button-add">Dodaj nową książkę</a></p>
+    </main>
+<%- include('../../fragments/footer.ejs') %>
