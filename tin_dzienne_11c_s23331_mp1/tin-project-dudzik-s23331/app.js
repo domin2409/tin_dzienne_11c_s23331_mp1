@@ -10,8 +10,15 @@ const wypozyczenieRouter = require('./routes/wypozyczenieRoute')
 const czytelnikRouter = require('./routes/czytelnikRoute')
 const ksiazkaRouter = require('./routes/ksiazkaRoute')
 
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+    .catch(err =>{console.log(err)});
+
 var app = express();
 
+const czytelnikApiRouter = require('./routes/api/CzytelnikApiRoute');
+const ksiazkaApiRouter = require('./routes/api/KsiazkaApiRoute');
+const wypozyczenieApiRouter = require('./routes/api/WypozyczenieApiRoute');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -26,6 +33,11 @@ app.use('/', indexRouter);
 app.use('/wypozyczenie', wypozyczenieRouter);
 app.use('/czytelnik', czytelnikRouter);
 app.use('/ksiazka', ksiazkaRouter);
+
+app.use('/api/czytelnik', czytelnikApiRouter);
+app.use('/api/ksiazka', ksiazkaApiRouter);
+app.use('/api/wypozyczenie', wypozyczenieApiRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
