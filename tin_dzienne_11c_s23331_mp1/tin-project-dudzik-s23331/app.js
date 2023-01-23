@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var cors = require('cors');
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 const wypozyczenieRouter = require('./routes/wypozyczenieRoute')
@@ -15,10 +15,12 @@ sequelizeInit()
     .catch(err =>{console.log(err)});
 
 var app = express();
+app.use(cors());
 
 const czytelnikApiRouter = require('./routes/api/CzytelnikApiRoute');
 const ksiazkaApiRouter = require('./routes/api/KsiazkaApiRoute');
 const wypozyczenieApiRouter = require('./routes/api/WypozyczenieApiRoute');
+// const cors = require("cors");
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

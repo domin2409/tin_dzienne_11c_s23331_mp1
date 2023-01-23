@@ -1,9 +1,9 @@
 const WypozyczenieRepository = require("../repository/sequelize/WypozyczenieRepository");
 
-exports.getCzytelnicy = (req, res, next) => {
-    WypozyczenieRepository.getCzytelnicy()
-        .then(czytelnicy => {
-            res.status(200).json(czytelnicy);
+exports.getWypozyczenie = (req, res, next) => {
+    WypozyczenieRepository.getWypozyczenie()
+        .then(wypozyczenie => {
+            res.status(200).json(wypozyczenie);
         })
         .catch(err => {
             console.log(err);
