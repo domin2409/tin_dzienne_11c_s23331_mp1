@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getKsiazkaApiCall} from "../../apiCalls/ksiazkaApiCalls";
 import KsiazkaListTable from "../fragments/KsiazkaListTable";
+import {useTranslation} from "react-i18next";
 
 function KsiazkaList() {
     const [error, setError] = useState(null)
@@ -11,6 +12,7 @@ function KsiazkaList() {
 
     // const czytelnikList = getKsiazkaApiCall()
 
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetchKsiazkaList()
@@ -39,13 +41,13 @@ function KsiazkaList() {
 
 
     let content;
-    let title = 'Lista książek';
+    let title = <p>{t('ksiazka.list.pageTitle')}</p>;
     if (error) {
         content = <p>Błąd: {error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych książek...</p>
+        content = <p>{t('ksiazka.list.loadData')}</p>
     } else if (ksiazka.length === 0) {
-        title = <p>Obecnie nie ma żadnych zarejestrowanych książek!</p>
+        title = <p>{t('ksiazka.list.noData')}</p>
         content = '';
     }else {
         content = <KsiazkaListTable ksiazkaList={ksiazka} />
@@ -56,7 +58,7 @@ function KsiazkaList() {
             <h2>{title}</h2>
             { content}
             <p className="section-buttons">
-                <Link to="/ksiazka/add" className="button-add">Dodaj nową książkę</Link>
+                <Link to="/ksiazka/add" className="button-add">{t('ksiazka.list.addNew')}</Link>
             </p>
         </main>
     )

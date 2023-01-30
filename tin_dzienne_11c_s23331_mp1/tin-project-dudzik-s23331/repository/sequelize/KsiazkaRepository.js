@@ -3,7 +3,7 @@ const Wypozyczenie = require("../../model/sequelize/Wypozyczenie");
 const Ksiazka = require("../../model/sequelize/Ksiazka");
 
 exports.getKsiazki = () => {
-    return Czytelnik.findAll();
+    return Ksiazka.findAll();
 };
 
 exports.getKsiazkaById = (id_ksiazka) => {
@@ -27,7 +27,8 @@ exports.createKsiazka = (newKsiazkaData) =>{
         autor_imie: newKsiazkaData.autor_nazwisko,
         autor_nazwisko: newKsiazkaData.autor_nazwisko,
         waga: newKsiazkaData.waga,
-        data_wydania: newKsiazkaData.data_wydania
+        data_wydania: newKsiazkaData.data_wydania,
+        gatunek: newKsiazkaData.gatunek
     });
 };
 

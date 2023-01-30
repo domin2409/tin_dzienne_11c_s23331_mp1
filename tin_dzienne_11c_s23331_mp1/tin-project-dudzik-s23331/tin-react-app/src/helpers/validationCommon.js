@@ -7,7 +7,7 @@ let valid = true;
 
 
 //  funkcję czyszczącą formatowanie błędnych pól oraz ich komunikatów:  wcześniej było tu errorInfo
-function resetErrors(inputs,errorText){
+export function resetErrors(inputs,errorText){
     for(let i=0; i< inputs.length; i++){
 
         inputs[i].classList.remove("error-input")
@@ -22,7 +22,7 @@ function resetErrors(inputs,errorText){
 }
 
 
-function checkForInput(htmlElement, htmlErrorField){
+export function checkForInput(htmlElement, htmlErrorField){
     if(!checkRequired(htmlElement.value)){
         valid = false;
         htmlElement.classList.add("error-input");
@@ -31,32 +31,27 @@ function checkForInput(htmlElement, htmlErrorField){
     }
 }
 
-function checkTextLengthRange(htmlElement, htmlErrorField, lengthMin, lengthMax ){
-    let correctRange = true;
-    if(!htmlElement.value){
+export function checkTextLengthRange(value, min, max) {
+    if (!value) {
+        return false;
+    }
 
-        valid = false;
-        correctRange = false;
-    }
-    let value = htmlElement.value.toString().trim();
+    value = value.toString().trim();
     const length = value.length;
-    if (lengthMax && length> lengthMax){
-        valid = false;
-        correctRange = false;
+    if (max && length > max) {
+        return false;
     }
-    if (lengthMin && length< lengthMin){
-        valid = false;
-        correctRange = false;
+
+    if (min && length < min) {
+        return false;
     }
-    if (!correctRange ){
-        htmlElement.classList.add("error-input");
-        htmlErrorField.innerText = "Pole powinno zawierać od "+lengthMin+ " do "+lengthMax+" znaków";
-    }
+
+    return true;
 }
 
 
 // sprawdź czy funkcja jest wymagana??
-function checkRequired(value){
+export function checkRequired(value){
     if (!value){
         return false;
     }
@@ -67,7 +62,7 @@ function checkRequired(value){
     return true;
 }
 //W3C
-function validateEmail(email) {
+export function validateEmail(email) {
     const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return res.test(String(email).toLowerCase());
 }

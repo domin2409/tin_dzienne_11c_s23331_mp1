@@ -1,3 +1,5 @@
+
+
 const Czytelnik = require("../../model/sequelize/Czytelnik");
 const Wypozyczenie = require("../../model/sequelize/Wypozyczenie");
 const Ksiazka = require("../../model/sequelize/Ksiazka");
@@ -20,12 +22,19 @@ exports.getCzytelnikById = (id_czytelnik) => {
 };
 
 
+exports.findByEmail = (email) => {
+return Czytelnik.findOne({
+    where: {email: email}
+})
+}
 
 exports.createCzytelnik = (newCzytelnikData) =>{
     return Czytelnik.create({
         imie: newCzytelnikData.imie,
         nazwisko: newCzytelnikData.nazwisko,
-        data_dolaczenia: newCzytelnikData.data_dolaczenia
+        data_dolaczenia: newCzytelnikData.data_dolaczenia,
+        email: newCzytelnikData.email,
+        password: newCzytelnikData.password
     });
 };
 

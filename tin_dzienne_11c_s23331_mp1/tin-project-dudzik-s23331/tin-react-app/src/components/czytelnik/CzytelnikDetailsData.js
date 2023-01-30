@@ -1,20 +1,24 @@
+import {useTranslation} from "react-i18next";
+import {getFormattedDate} from "../../helpers/dateHelper";
+
 function CzytelnikDetailsData(props) {
     const czytelnik = props.czytelnikData
     // const wypozyczenie = props.wypozyczenie
+    const { t } = useTranslation();
 
     return (
         <>
-            <p>Imię: {czytelnik.imie}</p>
-            <p>Nazwisko: {czytelnik.nazwisko} </p>
-            <p>Data dołączenia: {czytelnik.data_dolaczenia} </p>
-            <h2>historia wypozyczeń</h2>
+            <p>{t('czytelnik.fields.imie')}: {czytelnik.imie}</p>
+            <p>{t('czytelnik.fields.nazwisko')}: {czytelnik.nazwisko} </p>
+            <p>{t('czytelnik.fields.data_dolaczenia')}: {getFormattedDate(czytelnik.data_dolaczenia)} </p>
+            <h2>{t('wypozyczenie.form.wypozyczenie')}</h2>
             <table className="table-list">
                 <thead>
                 <tr>
-                    <th>Tytuł</th>
-                    <th>Data_wypozyczenia</th>
-                    <th>Nazwisko autora</th>
-                    <th>Data wydania</th>
+                    <th>{t('ksiazka.fields.tytul')}</th>
+                    <th>{t('wypozyczenie.fields.data_wypozyczenia')}</th>
+                    <th>{t('ksiazka.fields.autor_nazwisko')}</th>
+                    <th>{t('ksiazka.fields.data_wydania')}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,7 +28,7 @@ function CzytelnikDetailsData(props) {
                             <td>{wypozyczenia.ksiazka.tytul}</td>
                             <td>{wypozyczenia.data_wypozyczenia}</td>
                             <td>{wypozyczenia.ksiazka.autor_nazwisko }</td>
-                            <td>{wypozyczenia.ksiazka.data_wydania }</td>
+                            <td>{getFormattedDate(wypozyczenia.ksiazka.data_wydania) }</td>
                         </tr>
                 )}
                 </tbody>

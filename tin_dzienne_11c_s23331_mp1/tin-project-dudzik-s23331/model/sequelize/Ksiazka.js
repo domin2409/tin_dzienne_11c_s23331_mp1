@@ -28,6 +28,10 @@ const Ksiazka = sequelize.define('Ksiazka', {
         type: Sequelize.DATE,
         allowNull: false
 
+    },
+    gatunek: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
 
 })

@@ -9,13 +9,23 @@ var indexRouter = require('./routes/index');
 const wypozyczenieRouter = require('./routes/wypozyczenieRoute')
 const czytelnikRouter = require('./routes/czytelnikRoute')
 const ksiazkaRouter = require('./routes/ksiazkaRoute')
-
+const authApiRouter = require('./routes/api/AuthApiRoute');
 const sequelizeInit = require('./config/sequelize/init');
 sequelizeInit()
     .catch(err =>{console.log(err)});
 
 var app = express();
-app.use(cors());
+
+
+
+
+// app.use((req, res, next) =>{
+//   const loggedUser = req.session.loggedUser;
+//   res.locals.loggedUser = loggedUser;
+//   if(!res.locals.loginError) {
+//     res.locals.loginError = undefined;
+//   }
+// })
 
 const czytelnikApiRouter = require('./routes/api/CzytelnikApiRoute');
 const ksiazkaApiRouter = require('./routes/api/KsiazkaApiRoute');
@@ -30,6 +40,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+const session = require('express-session');
+const authUtils = require("./util/authUtils");
+app.use(session({
+  secret: 'my_secret_password',
+  resave: false
+}));
+
+app.use('/api/auth', authApiRouter);
 
 app.use('/', indexRouter);
 app.use('/wypozyczenie', wypozyczenieRouter);
@@ -40,7 +59,13 @@ app.use('/api/czytelnik', czytelnikApiRouter);
 app.use('/api/ksiazka', ksiazkaApiRouter);
 app.use('/api/wypozyczenie', wypozyczenieApiRouter);
 
-
+// app.use('/wypozyczenie', authUtils.permitAuthenticatedUser, wypozyczenieRouter);
+// app.use('/czytelnik', authUtils.permitAuthenticatedUser, czytelnikRouter);
+// app.use('/ksiazka', authUtils.permitAuthenticatedUser, ksiazkaRouter);
+//
+// app.use('/api/czytelnik', authUtils.permitAuthenticatedUser, czytelnikApiRouter);
+// app.use('/api/ksiazka', authUtils.permitAuthenticatedUser, ksiazkaApiRouter);
+// app.use('/api/wypozyczenie', authUtils.permitAuthenticatedUser, wypozyczenieApiRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -5,7 +5,15 @@ const Wypozyczenie = require("../../model/sequelize/Wypozyczenie");
 const Ksiazka = require("../../model/sequelize/Ksiazka");
 
 exports.getWypozyczenie = () => {
-    return Wypozyczenie.findAll();
+    return Wypozyczenie.findAll({include: [
+        {
+            model: Czytelnik,
+            as: 'czytelnik'
+}, {
+                model: Ksiazka,
+                as: 'ksiazka'
+            }]
+    });
 };
 
 exports.getWypozyczenieById = (id_wypozyczenie) => {

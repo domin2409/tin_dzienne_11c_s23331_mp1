@@ -1,19 +1,23 @@
 import React from 'react';
-import CzytelnikListTableRow from './CzytelnikListTableRow'
 import KsiazkaListTableRow from "./KsiazkaListTableRow";
+import {useTranslation} from "react-i18next";
 
 function KsiazkaListTable(props) {
     const ksiazka = props.ksiazkaList
+    const { t } = useTranslation();
+
     return (
 <table className="table-list">
     <thead>
     <tr>
-        <th>Tytul</th>
-        <th>Imie autora</th>
-        <th>Nazwisko autora</th>
-        <th>Data wydania</th>
-        <th>Waga</th>
-        <th>Akcje</th>
+        <th>{t('ksiazka.fields.tytul')}</th>
+        <th>{t('ksiazka.fields.autor_imie')}</th>
+        <th>{t('ksiazka.fields.autor_nazwisko')}</th>
+        <th>{t('ksiazka.fields.data_wydania')}</th>
+        <th>{t('ksiazka.fields.waga')}</th>
+        <th>{t('ksiazka.fields.gatunek')}</th>
+        <th>{t('list.actions.title')}</th>
+
     </tr>
     </thead>
     <tbody>

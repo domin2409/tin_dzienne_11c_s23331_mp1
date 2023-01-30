@@ -1,0 +1,135 @@
+{
+  "main-page": {
+    "content": "Strona główna"
+  },
+  "nav": {
+    "main-page": "Strona główna",
+    "czytelnik": "Czytelnicy",
+    "wypozyczenie": "Wypożyczenia",
+    "ksiazka": "Książki"
+  },
+  "list": {
+    "actions": {
+      "title": "Akcje",
+      "details": "Szczegóły",
+      "edit": "Edytuj",
+      "delete": "Usuń"
+    }
+  },
+  "form": {
+    "actions": {
+      "return": "Powrót",
+      "edit": "Edytuj",
+      "cancel": "Anuluj"
+    }
+  },
+  "czytelnik": {
+    "fields": {
+      "imie": "Imię",
+      "nazwisko": "Nazwisko",
+      "data_dolaczenia": "Data Dołączenia"
+    },
+    "list": {
+      "title": "Czytelnik",
+      "addNew": "Dodaj nowego czytelnika",
+      "noData": "Brak czytelików w bazie",
+      "pageTitle": "Lista czytelników",
+      "loadData": "Ładowanie danych czytelników..."
+    },
+    "form": {
+      "wypozyczenie": "Historia wypożyczeń",
+      "add": {
+        "pageTitle": "Dodawanie czytelnika",
+        "btnLabel": "Dodaj czytelnika",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie dodano czytelnika"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja czytelnika",
+        "btnLabel": "Zapisz zmiany",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie zaktualizowano czytelnika"
+        }
+      }
+    }
+  },
+  "wypozyczenie": {
+    "fields": {
+      "zwrocono": "Zwrócono?",
+      "data_wypozyczenia": "Data wypożyczenia"
+    },
+    "list": {
+      "title": "Wypozyczenia",
+      "addNew": "Dodaj nowe wypożyczenie",
+      "noData": "Brak wypożyczeń w bazie",
+      "pageTitle": "Lista wypożyczeń",
+      "loadData": "Ładowanie danych wypożyczeń..."
+    },
+    "form": {
+      "wypozyczenie": "Historia wypożyczeń",
+      "add": {
+        "pageTitle": "Dodawanie wypożyczenia",
+        "btnLabel": "Dodaj wypożyczenie",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie dodano wypożyczenie"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja wypożyczenia",
+        "btnLabel": "Zapisz zmiany",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie zaktualizowano wypożyczenie"
+        }
+      }
+    }
+  },
+  "ksiazka": {
+    "fields": {
+      "tytul": "Tytuł",
+      "autor_imie": "Imie autora",
+      "autor_nazwisko": "Nazwisko autora",
+      "waga": "Waga",
+      "data_wydania": "Data wydania"
+    },
+    "list": {
+      "title": "Książki",
+      "addNew": "Dodaj nową książkę",
+      "noData": "Brak książek w bazie",
+      "pageTitle": "Lista książek",
+      "loadData": "Ładowanie danych książek..."
+    },
+    "form": {
+      "wypozyczenie": "Historia wypożyczeń",
+      "add": {
+        "pageTitle": "Dodawanie książki",
+        "btnLabel": "Dodaj książkę",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie dodano książkę"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja książki",
+        "btnLabel": "Zapisz zmiany",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie zaktualizowano książkę"
+        }
+      }
+    }
+  },
+  "validation": {
+    "messages": {
+      "notEmpty": "To pole jest wymagane",
+      "len_2_60": "To pole wymaga od 2 do 60 znaków",
+      "len_5_60": "To pole wymaga od 5 do 60 znaków",
+      "isEmail": "To pole wymaga poprawnego adresu email",
+      "formErrors": "Formularz zawiera błędy"
+    }
+  }
+}

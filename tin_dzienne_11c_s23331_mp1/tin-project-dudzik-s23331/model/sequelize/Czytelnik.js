@@ -9,18 +9,66 @@ const Czytelnik = sequelize.define('Czytelnik', {
         primaryKey: true,
     },
     imie: {
-        type: Sequelize.TEXT,
-        allowNull: false
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty:{
+                msg: "Pole jest wymagane"
+            },
+            len:{
+                args: [2,60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            }
+        }
     },
     nazwisko: {
-        type: Sequelize.TEXT,
-        allowNull: false
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty:{
+                msg: "Pole jest wymagane"
+            },
+            len:{
+                args: [2,60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            }
+        }
     },
 
     data_dolaczenia: {
         type: Sequelize.DATE,
         allowNull: false
 
+    },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+            notEmpty: {
+                msg: "notEmpty"
+            },
+            len: {
+                args: [2,60],
+                msg: 'len_2_60'
+            }
+        }
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty:{
+                msg: "Pole jest wymagane"
+            },
+            len:{
+                args: [5,60],
+                msg: "Pole powinno zawierać od 5 do 60 znaków",
+                isEmail:{
+                    msg:"Pole powinno zawierać prawidłowy email"
+                }
+            }
+        }
     }
 
 })

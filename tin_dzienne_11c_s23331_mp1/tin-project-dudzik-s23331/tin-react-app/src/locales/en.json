@@ -1,0 +1,135 @@
+{
+  "main-page": {
+    "content": "Main Page"
+  },
+  "nav": {
+    "main-page": "Main Page",
+    "czytelnik": "Readers",
+    "wypozyczenie": "Borrow a book",
+    "ksiazka": "Books"
+  },
+  "list": {
+    "actions": {
+      "title": "Actions",
+      "details": "Details",
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  },
+  "form": {
+    "actions": {
+      "return": "Return",
+      "edit": "Edit",
+      "cancel": "Cancel"
+    }
+  },
+  "czytelnik": {
+    "fields": {
+      "imie": "First name",
+      "nazwisko": "Last name",
+      "data_dolaczenia": "Date of joining"
+    },
+
+    "list": {
+      "title": "Readers",
+      "addNew": "Add new reader",
+      "noData": "No readers in the database",
+      "pageTitle": "List of readers"
+    },
+    "form": {
+      "wypozyczenie": "History of borrowing",
+      "add": {
+        "pageTitle": "Adding a new reader",
+        "btnLabel": "Add the reader",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The reader has successfully created"
+        }
+      },
+      "edit": {
+        "pageTitle": "Editing a reader",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "The reader has been successfully updated"
+        }
+      }
+    }
+  },
+  "wypozyczenie": {
+    "fields": {
+      "zwrocono": "Returned?",
+      "data_wypozyczenia": "Renting date"
+    },
+    "list": {
+      "title": "Renting",
+      "addNew": "Add new rental",
+      "noData": "No rentals in the database",
+      "pageTitle": "List of rentals",
+      "loadData": "Loading rental data..."
+    },
+    "form": {
+      "wypozyczenie": "Rental history",
+      "add": {
+        "pageTitle": "Adding rental",
+        "btnLabel": "Add rental",
+        "confirm": {
+          "header": "Confirmation of action",
+          "text": "Successfully added rental"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edit rental",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Action confirmation",
+          "text": "Successfully updated rental"
+        }
+      }
+    }
+  },
+  "ksiazka": {
+    "fields": {
+      "tytul": "Title",
+      "autor_imie": "Author's firstname",
+      "autor_nazwisko": "Author's lastname",
+      "waga": "Weight",
+      "data_wydania": "Release date"
+    },
+    "list": {
+      "title": "Books",
+      "addNew": "Add new book",
+      "noData": "No books in the database",
+      "pageTitle": "Book list",
+      "loadData": "Loading book data..."
+    },
+    "form": {
+      "wypozyczenie": "Rental history",
+      "add": {
+        "pageTitle": "Add new book",
+        "btnLabel": "Add book",
+        "confirm": {
+          "header": "Operation confirmation",
+          "text": "Successfully added book"
+        }
+      },
+      "edit": {
+        "pageTitle": "Book edit",
+        "btnLabel": "Save changes",
+        "confirm": {
+          "header": "Confirmation of actions",
+          "text": "Successfully added book"
+        }
+      }
+    }
+  },
+  "validation": {
+    "messages": {
+      "notEmpty": "The field is required",
+      "len_2_60": "The field should contain from 2 to 60 characters",
+      "len_5_60": "The field should contain from 5 to 60 characters",
+      "isEmail": "The field should contain a valid email address",
+      "formErrors": "The form contains errors"
+    }
+  }
+}

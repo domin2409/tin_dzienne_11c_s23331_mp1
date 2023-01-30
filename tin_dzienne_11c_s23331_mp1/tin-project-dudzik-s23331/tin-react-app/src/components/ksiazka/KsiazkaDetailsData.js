@@ -1,25 +1,31 @@
+import {useTranslation} from "react-i18next";
+import {getFormattedDate} from "../../helpers/dateHelper";
+
 function KsiazkaDetailsData(props) {
     const ksiazka = props.ksiazkaData
     // const wypozyczenie = props.wypozyczenie
+    const { t } = useTranslation();
 
     return (
         <>
-            <p>Tytuł: {ksiazka.tytul}</p>
-            <p>Imie autora: {ksiazka.autor_imie} </p>
-            <p>Nazwisko autora: {ksiazka.autor_nazwisko} </p>
-            <p>Waga: {ksiazka.waga} </p>
-            <p>Data wydania: {ksiazka.data_wydania} </p>
-            <h2>historia wypozyczeń</h2>
+            <p>{t('ksiazka.fields.tytul')}: {ksiazka.tytul}</p>
+            <p>{t('ksiazka.fields.autor_imie')}: {ksiazka.autor_imie} </p>
+            <p>{t('ksiazka.fields.autor_nazwisko')}: {ksiazka.autor_nazwisko} </p>
+            <p>{t('ksiazka.fields.waga')}: {ksiazka.waga} </p>
+            <p>{t('ksiazka.fields.data_wydania')}: {getFormattedDate(ksiazka.data_wydania)} </p>
+            <p>{t('ksiazka.fields.gatunek')}: {ksiazka.gatunek} </p>
+
+            <h2>{t('wypozyczenie.form.wypozyczenie')}</h2>
             <table className="table-list">
                 <thead>
                 <tr>
-                    <th>Tytuł</th>
-                    <th>Data_wypozyczenia</th>
-                    <th>Nazwisko autora</th>
-                    <th>Data wydania</th>
-                    <th>Imie czytelnika</th>
-                    <th>Nazwisko czytelnika</th>
-                    <th>Zwrócono?</th>
+                    <th>{t('ksiazka.fields.tytul')}</th>
+                    <th>{t('wypozyczenie.fields.data_wypozyczenia')}</th>
+                    <th>{t('ksiazka.fields.autor_nazwisko')}</th>
+                    <th>{t('ksiazka.fields.data_wydania')}</th>
+                    <th>{t('czytelnik.fields.imie')}</th>
+                    <th>{t('czytelnik.fields.nazwisko')}</th>
+                    <th>{t('wypozyczenie.fields.zwrocono')}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,9 +33,9 @@ function KsiazkaDetailsData(props) {
                     wypozyczenia =>
                         <tr key={wypozyczenia._id}>
                             <td>{ksiazka.tytul}</td>
-                            <td>{wypozyczenia.data_wypozyczenia}</td>
+                            <td>{getFormattedDate(wypozyczenia.data_wypozyczenia)}</td>
                             <td>{ksiazka.autor_nazwisko }</td>
-                            <td>{ksiazka.data_wydania }</td>
+                            <td>{getFormattedDate(ksiazka.data_wydania )}</td>
                             <td>{wypozyczenia.czytelnik.imie }</td>
                             <td>{wypozyczenia.czytelnik.nazwisko }</td>
                             <td>{wypozyczenia.zwrocono }</td>

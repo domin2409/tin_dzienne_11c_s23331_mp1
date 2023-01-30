@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next';
 function MainContent() {
+
+    const { t } = useTranslation();
     return (
         <main>
-            <h2>Strona główna</h2>
+            <h2>{t('main-page.content')}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...
             </p>
         </main>

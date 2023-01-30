@@ -1,34 +1,32 @@
 import {
-    addCzytelnikApiCall,
-    getCzytelnikApiCall,
-    getCzytelnikByIdApiCall,
-    updateCzytelnikApiCall
-} from "../../apiCalls/czytelnikApiCalls";
-import {getKsiazkaApiCall} from "../../apiCalls/ksiazkaApiCalls";
-import FormMode, {formValidationKeys, getValidationErrorKey} from '../../helpers/FormHelper'
+    addKsiazkaApiCall,
+    getKsiazkaApiCall,
+    getKsiazkaByIdApiCall,
+    updateKsiazkaApiCall
+} from "../../apiCalls/ksiazkaApiCalls";
+import FormMode from '../../helpers/FormHelper'
 import FormButtons from '../form/FormButtons'
 import {useEffect, useState} from "react";
 import {useParams, useNavigate, } from "react-router-dom";
 import {checkRequired, checkTextLengthRange} from '../../helpers/validationCommon'
-// import { formValidationKeys } from '../../helpers/formHelper'
 import {useTranslation} from "react-i18next";
 import {getFormattedDate} from "../../helpers/dateHelper";
 
 
-function CzytelnikForm(){
-    const [czytelnik, setCzytelnik] = useState({
-        'imie': '',
-        'nazwisko': '',
-        'data_dolaczenia': '',
-        'email': '',
-        'password': ''
+function KsiazkaForm(){
+    const [ksiazka, setKsiazka] = useState({
+        'tytul': '',
+        'autor_imie': '',
+        'autor_nazwisko': '',
+        'waga': '0',
+        'data_wydania': ''
     })
     const [errors, setErrors] = useState({
-        'imie': '',
-        'nazwisko': '',
-        'data_dolaczenia': '',
-        'email': '',
-        'password': ''
+        'tytul': '',
+        'autor_imie': '',
+        'autor_nazwisko': '',
+        'waga': '',
+        'data_wydania': ''
     })
 
     const { t } = useTranslation();
@@ -39,86 +37,82 @@ function CzytelnikForm(){
     const [redirect, setRedirect] = useState(false)
 
 
-    const { czytelnikId } = useParams()
-    const currentFormMode = czytelnikId ? FormMode.EDIT : FormMode.NEW
+    const { ksiazkaId } = useParams()
+    const currentFormMode = ksiazkaId ? FormMode.EDIT : FormMode.NEW
     const navigate = useNavigate();
-    const pageTitle = t(`czytelnik.form.${currentFormMode=== FormMode.NEW ? 'add' : 'edit'}.pageTitle`);
-    // const pageTitle = currentFormMode === FormMode.NEW ? t('czytelnik.list.addNew') : t('czytelnik.edit.pageTitle');
+    const pageTitle = t(`ksiazka.form.${currentFormMode=== FormMode.NEW ? 'add' : 'edit'}.pageTitle`);
     const submitButtonLabel = currentFormMode === FormMode.NEW ? 'Add' : 'Edit';
-    const cancelPath = "/czytelnik"
+    const cancelPath = "/ksiazka"
 
     const errorsSummary = hasErrors() ? 'Form contains errors' : '';
     const fetchError = error ? `Error: ${error.message}` : '';
     const globalErrorMessage = errorsSummary || fetchError || message;
 
 
-    let translatedErrorMessage = ''
-    if (error) {
-        const errorKey = getValidationErrorKey(error)
-        translatedErrorMessage = t(errorKey)
-    }
-
 
     useEffect(() => {
         if (currentFormMode === FormMode.EDIT) {
-            fetchCzytelnikDetails()
+            fetchKsiazkaDetails()
         }
     }, [])
     useEffect(() => {
         if (redirect) {
-            navigate('/czytelnik')
+            navigate('/ksiazka')
         }
     }, [redirect])
 
     let content;
-
     if (!isLoaded && currentFormMode === FormMode.EDIT) {
-        content = "Pobieranie danych czytelników...";
+        content = "Pobieranie danych książek...";
     } else {
         content = (
             <form className="form" onSubmit={handleSubmit}>
-                <label htmlFor="imie">{t('czytelnik.fields.imie')} <span className="symbol-required">*</span></label>
-                <input type="text" name="imie" id="imie" required onChange={handleChange} value={czytelnik.imie}/>
-                    <span id="errorimie">{errors.imie}</span>
+                <label htmlFor="tytul">{t('ksiazka.fields.tytul')}: <span className="symbol-required">*</span></label>
+                <input type="text" name="tytul" id="tytul" required onChange={handleChange} value={ksiazka.tytul}/>
+                <span id="errortytul"></span>
 
-                    <label htmlFor="nazwisko">{t('czytelnik.fields.nazwisko')} <span className="symbol-required">*</span></label>
-                    <input type="text" name="nazwisko" id="nazwisko" required onChange={handleChange} value={czytelnik.nazwisko}/>
-                        <span id="errornazwisko">{errors.nazwisko}</span>
+                <label htmlFor="autor_imie">{t('ksiazka.fields.autor_imie')}: <span className="symbol-required">*</span></label>
+                <input type="text" name="autor_imie" id="autor_imie" required onChange={handleChange} value={ksiazka.autor_imie}/>
+                <span id="errorAutorImie"></span>
 
-                        <label htmlFor="data_dolaczenia">{t('czytelnik.fields.data_dolaczenia')} <span className="symbol-required">*</span></label>
-                        <input type="date" name="data_dolaczenia" id="data_dolaczenia"  required onChange={handleChange} value={getFormattedDate(czytelnik.data_dolaczenia)}/>
-                            <span id="errorDate">{errors.data_dolaczenia}</span>
+                <label htmlFor="autor_nazwisko">{t('ksiazka.fields.autor_nazwisko')}: <span className="symbol-required">*</span></label>
+                <input type="text" name="autor_nazwisko" id="autor_nazwisko" required onChange={handleChange} value={ksiazka.autor_nazwisko}/>
+                <span id="errorAutorNazwisko"></span>
 
-                <label htmlFor="email">{t('czytelnik.fields.email')} <span className="symbol-required">*</span></label>
-                <input type="text" name="email" id="email" required onChange={handleChange} value={czytelnik.email}/>
-                <span id="erroremail">{errors.email}</span>
+                <label htmlFor="waga">{t('ksiazka.fields.waga')}: <span className=""></span></label>
+                <input type="number" name="waga" id="waga" onChange={handleChange} value={ksiazka.waga}/>
+                <span id="errorWaga"></span>
 
-                <label htmlFor="password">{t('czytelnik.fields.password')} <span className="symbol-required">*</span></label>
-                <input type="text" name="password" id="password" required onChange={handleChange} value={czytelnik.password}/>
-                <span id="errorpassword">{errors.password}</span>
+                <label htmlFor="data_wydania">{t('ksiazka.fields.data_wydania')} <span className="symbol-required">*</span></label>
+                <input type="date" name="data_wydania" id="data_wydania"  required onChange={handleChange} value={getFormattedDate(ksiazka.data_wydania)}/>
+                <span id="errorDate"></span>
+
+                <label htmlFor="gatunek">{t('ksiazka.fields.gatunek')}: <span className=""></span></label>
+                <input type="number" name="gatunek" id="gatunek" onChange={handleChange} value={ksiazka.gatunek}/>
+                <span id="errorGatunek"></span>
 
                 <FormButtons
                     error={globalErrorMessage}
                     submitButtonLabel={submitButtonLabel}
                     cancelPath={cancelPath} />
             </form>
-    )
-}
+        )
+    }
     return (
         <main>
             <h2>{pageTitle}</h2>
             {content}
         </main>
     )
-    function fetchCzytelnikDetails() {
-        getCzytelnikByIdApiCall(czytelnikId)
+    function fetchKsiazkaDetails() {
+        getKsiazkaByIdApiCall(ksiazkaId)
             .then(res => res.json())
             .then(
                 (data) => {
                     if (data.message) {
                         setMessage(data.message)
                     } else {
-                        setCzytelnik(data)
+                        setKsiazka(data)
                         setMessage(null)
                     }
                     setIsLoaded(true)
@@ -136,46 +130,45 @@ function CzytelnikForm(){
             ...errors,
             [name]: errorMessage
         })
-        setCzytelnik({
-            ...czytelnik,
+        setKsiazka({
+            ...ksiazka,
             [name]: value
         })
     }
     function validateField(fieldName, fieldValue) {
         let errorMessage = ''
-        if (fieldName === 'imie') {
+        if (fieldName === 'tytul') {
             if (!checkRequired(fieldValue)) {
-                errorMessage = formValidationKeys.notEmpty
+                errorMessage = 'Pole jest wymagane.'
             } else if (!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = formValidationKeys.len_2_60
+                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków.'
             }
         }
-        if (fieldName === 'nazwisko') {
+        if (fieldName === 'autor_imie') {
             if (!checkRequired(fieldValue)) {
-                errorMessage = formValidationKeys.notEmpty
+                errorMessage = 'Pole jest wymagane.'
             } else if (!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = formValidationKeys.len_2_60
+                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków.'
             }
         }
-        if (fieldName === 'data_dolaczenia') {
+        if (fieldName === 'autor_nazwisko') {
             if (!checkRequired(fieldValue)) {
-                errorMessage = formValidationKeys.notEmpty
-            }
-        }
-        if (fieldName === 'email') {
-            if (!checkRequired(fieldValue)) {
-                errorMessage = formValidationKeys.notEmpty
+                errorMessage = 'Pole jest wymagane'
             } else if (!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = formValidationKeys.len_2_60
+                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków'
             }
         }
-        if (fieldName === 'password') {
+        if (fieldName === 'data_wydania') {
             if (!checkRequired(fieldValue)) {
-                errorMessage = formValidationKeys.notEmpty
-            } else if (!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = formValidationKeys.len_2_60
+                errorMessage = "Pole jest wymagane";
             }
         }
+        if (fieldName === 'gatunek') {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = "Pole jest wymagane";
+            }
+        }
+
         return errorMessage;
     }
 
@@ -184,12 +177,13 @@ function CzytelnikForm(){
     function handleSubmit(event) {
         event.preventDefault()
         const isValid = validateForm()
+        if(isNaN(parseInt(ksiazka.waga))){ksiazka.waga =0}
         if (isValid) {
             let promise, response
             if (currentFormMode === FormMode.NEW) {
-                promise = addCzytelnikApiCall(czytelnik)
+                promise = addKsiazkaApiCall(ksiazka)
             } else if (currentFormMode === FormMode.EDIT) {
-                promise = updateCzytelnikApiCall(czytelnikId, czytelnik)
+                promise = updateKsiazkaApiCall(ksiazkaId, ksiazka)
             }
             if (promise) {
                 promise
@@ -231,7 +225,7 @@ function CzytelnikForm(){
     function validateForm() {
         let isValid = true
         let serverFieldsErrors = {...errors}
-        Object.entries(czytelnik).forEach(([key, value]) => {
+        Object.entries(ksiazka).forEach(([key, value]) => {
             const errorMessage = validateField(key, value)
             serverFieldsErrors[key] = errorMessage
             if (errorMessage.length > 0) {
@@ -253,14 +247,4 @@ function CzytelnikForm(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-} export default CzytelnikForm
+} export default KsiazkaForm

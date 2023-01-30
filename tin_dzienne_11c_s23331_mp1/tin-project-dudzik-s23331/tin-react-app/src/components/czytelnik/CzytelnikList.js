@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getCzytelnikApiCall} from "../../apiCalls/czytelnikApiCalls";
 import CzytelnikListTable from "../fragments/CzytelnikListTable";
+import {t} from "i18next";
+import {useTranslation} from "react-i18next";
 
 function CzytelnikList() {
     const [error, setError] = useState(null)
@@ -10,6 +12,8 @@ function CzytelnikList() {
     const [czytelnicy, setCzytelnicy] = useState([])
 
     // const czytelnikList = getCzytelnikApiCall()
+
+    const { t } = useTranslation();
 
 
     useEffect(() => {
@@ -39,13 +43,13 @@ function CzytelnikList() {
 
 
     let content;
-    let title = 'Lista czytelników';
+    let title = <p>{t('czytelnik.list.pageTitle')}</p>
     if (error) {
         content = <p>Błąd: {error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych czytelników...</p>
+        content = <p>{t('czytelnik.list.loadData')}</p>
     } else if (czytelnicy.length === 0) {
-        title = <p>Obecnie nie ma żadnych zarejestrowanych czytelników!</p>
+        title = <p>{t('czytelnik.list.noData')}</p>
         content = '';
     }else {
         content = <CzytelnikListTable czytelnikList={czytelnicy} />
@@ -56,7 +60,7 @@ function CzytelnikList() {
             <h2>{title}</h2>
             { content}
             <p className="section-buttons">
-                <Link to="/czytelnik/add" className="button-add">Dodaj nowego czytelnika</Link>
+                <Link to="/czytelnik/add" className="button-add">{t('czytelnik.list.addNew')}</Link>
             </p>
         </main>
     )
